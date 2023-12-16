@@ -13,7 +13,7 @@ fastapi = "^0.105.0"
 uvicorn = "^0.24.0.post1"
 gunicorn = "^21.2.0"
 orjson = "^3.9.10"
-databases = { version = "0.6.1", extras= ["asynpg"]}
+databases = { version = "0.6.1", extras= ["asyncpg"]}
 alembic = "^1.13.0"
 sqlalchemy = {version = "1.4.40", extras=["asyncio"]}
 fastapi-pagination = "^0.12.13"
@@ -22,15 +22,11 @@ greenlet = "^3.0.2"
 
 
 
-[tool.poetry.group.test.dependencies]
+[tool.poetry.dev-dependencies]
 pytest = "^7.4.3"
 coverage = "^7.3.3"
 pylint = "^3.0.3"
 pytest-cov = "^4.1.0"
-
-
-[tool.poetry.group.coverage.dependencies]
-pytest = "^7.4.3"
 
 [build-system]
 requires = ["poetry-core"]
