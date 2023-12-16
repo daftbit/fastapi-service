@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "fastapi-service"
+version = "0.1.0"
+description = ""
+authors = ["daftbit"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+attrs = "^23.1.0"
+email-validator = "^2.1.0.post1"
+fastapi = "^0.105.0"
+uvicorn = "^0.24.0.post1"
+gunicorn = "^21.2.0"
+orjson = "^3.9.10"
+databases = { version = "0.6.1", extras= ["asynpg"]}
+alembic = "^1.13.0"
+sqlalchemy = {version = "1.4.40", extras=["asyncio"]}
+fastapi-pagination = "^0.12.13"
+fastapi-utils = "^0.2.1"
+greenlet = "^3.0.2"
+
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.3"
+coverage = "^7.3.3"
+pylint = "^3.0.3"
+pytest-cov = "^4.1.0"
+
+
+[tool.poetry.group.coverage.dependencies]
+pytest = "^7.4.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
