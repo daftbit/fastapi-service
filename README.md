@@ -1,2 +1,2 @@
-# fastapi-service
+# FastAPI-Service
 Sample FastAPI RESTful service

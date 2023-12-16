@@ -57,12 +57,11 @@ class Database:
             )
         if Database.__session_maker is None:
             Database.__session_maker = sessionmaker(bind=cls.__engine, expire_on_commit=False, class_=AsyncSession)
-    
-    
+
     @classmethod
     async def close_database_connection(cls):
         if Database.__engine is not None:
-            await Database.__engine.dispose() 
+            await Database.__engine.dispose()
 
     @classmethod
     def get_database_url(cls) -> str:
