@@ -1,6 +1,6 @@
 import enum
 
-from sqlalchemy import Column, DefaultClause, text, func, Text, ForeignKey
+from sqlalchemy import Column, DefaultClause, text, func, Text, ForeignKey, Enum
 from sqlalchemy.dialects.postgresql import UUID, TIMESTAMP
 
 from src.core.database import Base
@@ -25,5 +25,5 @@ class Invoice(Base):
     organization_id = Column(UUID(as_uuid=True), ForeignKey("organization.id"), nullable=False)
     created = Column(TIMESTAMP, server_default=func.now(), nullable=False)
     modified = Column(TIMESTAMP, server_default=text("CURRENT_TIMESTAMP"), nullable=False)
-    type = Column(enum.Enum(InvoiceType), nullable=False)
-    status = Column(enum.Enum(InvoiceStatus), nullable=False)
+    type = Column(Enum(InvoiceType), nullable=False)
+    status = Column(Enum(InvoiceStatus), nullable=False)
