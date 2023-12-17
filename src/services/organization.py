@@ -9,4 +9,5 @@ class OrganizationService:
         self.organization_repository = organization_repository
 
     async def create_organization(self, organization: OrgnaizationCreateSchema) -> Organization:
+        print("Im here")
         return await self.organization_repository.create_organization(organization)

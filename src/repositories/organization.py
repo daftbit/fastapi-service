@@ -25,6 +25,7 @@ class OrganizationRepository:
                 await session.refresh(new_organization)
             return new_organization
         except StatementError as exc:
+            print("Im here")
             # TODO: log error and raise exception to be caught by exception handler
             pass
 

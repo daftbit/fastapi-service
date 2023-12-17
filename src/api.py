@@ -2,6 +2,7 @@ import os
 from fastapi import FastAPI
 
 from src.core.database import Database
+from src.routes.organization import organization
 
 
 def init_api() -> FastAPI:
@@ -15,6 +16,7 @@ def init_api() -> FastAPI:
     version = os.environ.get("VERSION", "1.0.0")
     app = FastAPI(title="FastAPI Service", version=version)
     _init_middleware(app, version)
+    _init_routes(app)
     # Register event handlers (startup/shutdown)
     app.add_event_handler("startup", startup)
     app.add_event_handler("shutdown", shutdown)
@@ -44,6 +46,7 @@ def _init_routes(app: FastAPI):
     ----------
     app : FastAPI
     """
+    app.include_router(organization, prefix="/v1")
 
 
 async def startup():
