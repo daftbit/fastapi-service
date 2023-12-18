@@ -31,9 +31,25 @@ class OrganizationRepository:
     async def get_organizations(self, page_params: Params, user_id: UUID) -> AbstractPage[Organization]:
         try:
             async with self.session as session:
-                query = select(Organization).where(Organization.user_id == user_id).order_by(Organization.modified.desc())
+                query = (
+                    select(Organization).where(Organization.user_id == user_id).order_by(Organization.modified.desc())
+                )
                 q = await session.execute(query)
             return paginate(q.scalars().unique().all(), page_params)
         except StatementError as exc:
             # TODO: log error and raise exception to be caught by exception handler
+            pass
+
+    async def get_organization_by_id(self, organization_id: UUID) -> Organization:
+        try:
+            async with self.session as session:
+                query = select(Organization).where(Organization.id == organization_id)
+                q = await session.execute(query)
+                existing_organization = q.scalars().first()
+                if existing_organization is None:
+                    # TODO log and throw NotFoundException
+                    pass
+                return existing_organization
+        except StatementError as exc:
+            # TODO log error and raise exception to be caught by exception handler
             pass

@@ -13,6 +13,9 @@ class OrganizationService:
 
     async def create_organization(self, organization: OrgnaizationCreateSchema) -> Organization:
         return await self.organization_repository.create_organization(organization)
-    
+
     async def get_organizations(self, page_params: Params, user_id: UUID) -> AbstractPage[OrganizationSchema]:
         return await self.organization_repository.get_organizations(page_params, user_id)
+
+    async def get_organization_by_id(self, organization_id: UUID) -> OrganizationSchema:
+        return await self.organization_repository.get_organization_by_id(organization_id)
