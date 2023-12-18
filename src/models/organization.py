@@ -14,4 +14,8 @@ class Organization(Base):
     name = Column(Text, nullable=False)
     email = Column(Text)
     street_address = Column(Text)
+    city = Column(Text)
+    state = Column(Text)
+    zip_code = Column(Text)
+    country = Column(Text)
     phone_number = Column(Text)
