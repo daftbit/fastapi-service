@@ -1,4 +1,4 @@
-import uuid
+from uuid import UUID
 from fastapi import Depends
 from fastapi_pagination import Params, paginate
 from fastapi_pagination.bases import AbstractPage
@@ -25,14 +25,14 @@ class OrganizationRepository:
                 await session.refresh(new_organization)
             return new_organization
         except StatementError as exc:
-            print("Im here")
             # TODO: log error and raise exception to be caught by exception handler
             pass
 
-    async def get_organizations(self, page_params: Params, user_id: uuid.UUID) -> AbstractPage[Organization]:
+    async def get_organizations(self, page_params: Params, user_id: UUID) -> AbstractPage[Organization]:
         try:
-            query = select(Organization).where(Organization.user_id == user_id).order_by(Organization.modified_desc())
-            q = await self.session.execute(query)
+            async with self.session as session:
+                query = select(Organization).where(Organization.user_id == user_id).order_by(Organization.modified.desc())
+                q = await session.execute(query)
             return paginate(q.scalars().unique().all(), page_params)
         except StatementError as exc:
             # TODO: log error and raise exception to be caught by exception handler

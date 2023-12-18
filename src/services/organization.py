@@ -1,7 +1,10 @@
+from uuid import UUID
 from fastapi import Depends
+from fastapi_pagination import Params
+from fastapi_pagination.bases import AbstractPage
 from src.models.organization import Organization
 from src.repositories.organization import OrganizationRepository
-from src.schemas.organization import OrgnaizationCreateSchema
+from src.schemas.organization import OrganizationSchema, OrgnaizationCreateSchema
 
 
 class OrganizationService:
@@ -10,3 +13,6 @@ class OrganizationService:
 
     async def create_organization(self, organization: OrgnaizationCreateSchema) -> Organization:
         return await self.organization_repository.create_organization(organization)
+    
+    async def get_organizations(self, page_params: Params, user_id: UUID) -> AbstractPage[OrganizationSchema]:
+        return await self.organization_repository.get_organizations(page_params, user_id)
