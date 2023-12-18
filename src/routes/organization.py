@@ -13,6 +13,11 @@ organization = InferringRouter()
 
 @cbv(organization)
 class Organization:
+    # TODO add auth with JWT
+    # HTTPAuthorizationCredentials = Security(HTTPBearer())
+    # Auth handler
+    # usage auth_token = security.credentials
+    # Then utlize the custom decode method
     def __init__(self, organization_service: OrganizationService = Depends()):
         self.organization_service = organization_service
 

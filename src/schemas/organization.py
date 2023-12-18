@@ -10,6 +10,10 @@ class OrgnaizationCreateSchema(BaseModel):
     name: str
     email: Optional[str]
     street_address: Optional[str]
+    city: Optional[str]
+    state: Optional[str]
+    zip_code: Optional[str]
+    country: Optional[str]
     phone_number: Optional[str]
 
     class Config:
@@ -24,6 +28,10 @@ class OrganizationSchema(BaseModel):
     modified: datetime
     name: str
     street_address: Optional[str]
+    city: Optional[str]
+    state: Optional[str]
+    zip_code: Optional[str]
+    country: Optional[str]
     phone_number: Optional[str]
 
     class Config:
