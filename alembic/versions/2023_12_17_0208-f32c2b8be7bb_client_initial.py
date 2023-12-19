@@ -30,6 +30,10 @@ def upgrade() -> None:
                     sa.Column('last_name', sa.Text),
                     sa.Column('email', sa.Text),
                     sa.Column('street_address', sa.Text),
+                    sa.Column('city', sa.Text),
+                    sa.Column('state', sa.Text),
+                    sa.Column('zip_code', sa.Text),
+                    sa.Column('country', sa.Text),
                     sa.Column('phone_number', sa.Text),
                     sa.PrimaryKeyConstraint('id'))
 

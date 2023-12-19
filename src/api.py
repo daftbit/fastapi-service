@@ -70,8 +70,10 @@ def _init_exception_handlers(app: FastAPI):
 
 
 async def startup():
+    """Startup event registered to app"""
     await Database.open_database_connection()
 
 
 async def shutdown():
+    """Shutdown event registered to app"""
     await Database.close_database_connection()
