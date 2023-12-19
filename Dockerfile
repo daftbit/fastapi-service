@@ -14,7 +14,7 @@ ENV PATH="/root/.local/bin:${PATH}"
 COPY poetry.lock /app/
 COPY pyproject.toml /app/
 RUN poetry config installer.max-workers 10
-RUN poetry install --no-dev
+RUN poetry install --without test
 
 # Test container
 FROM release-base as test

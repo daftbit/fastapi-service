@@ -43,7 +43,7 @@ migration-history: # View migration history
 
 .PHONY: test-unit
 test-unit: build-local # Execute unit tests
-	poetry run pytest -v --cov-report term-missing --cov=serc tests/unit && poetry run coverage report --show-missing
+	poetry run pytest -v --cov-report term-missing --cov=src tests/unit && poetry run coverage report --show-missing
 
 .PHONY: test-coverage
 test-coverage: build-local # Generate test coverage report

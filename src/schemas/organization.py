@@ -5,9 +5,24 @@ from pydantic import BaseModel
 from pydantic.utils import to_lower_camel
 
 
-class OrgnaizationCreateSchema(BaseModel):
+class OrganizationCreateSchema(BaseModel):
     user_id: UUID
     name: str
+    email: Optional[str]
+    street_address: Optional[str]
+    city: Optional[str]
+    state: Optional[str]
+    zip_code: Optional[str]
+    country: Optional[str]
+    phone_number: Optional[str]
+
+    class Config:
+        alias_generator = to_lower_camel
+        allow_population_by_field_name = True
+
+
+class OrganizationUpdateSchema(BaseModel):
+    name: Optional[str]
     email: Optional[str]
     street_address: Optional[str]
     city: Optional[str]

@@ -1,0 +1,13 @@
+[coverage:run]
+source = src/
+
+[coverage:report]
+fail_under = 0
+show_missing = True
+skip_covered = True
+omit = 
+    bin/*
+    venv/*
+    src/api.py
+    src/main.py
+    src/repositories/*

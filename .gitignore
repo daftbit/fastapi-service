@@ -1,4 +1,5 @@
 *.swp
+.vscode
 
 # Test
 tests/*.xml
