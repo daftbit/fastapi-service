@@ -160,17 +160,15 @@ class TestOrganization(IsolatedAsyncioTestCase):
         )
         self.assertIsNotNone(response)
         self.assertEqual(response.status_code, 200)
-
+        
     @mock.patch.object(OrganizationService, "patch_organization_by_id")
     async def test_patch_organization_by_id(self, mocked_service):
         organization_id = uuid.uuid4()
         user_id = uuid.uuid4()
         params = [("user_id", str(user_id))]
-
-        request_body = OrganizationUpdateSchema(
-            city="SomeTown", state="SomeState", zip_code="12345"
-        )
-
+        
+        request_body = OrganizationUpdateSchema(city="SomeTown", state="SomeState", zip_code="12345")
+        
         mocked_service.return_value = Organization(
             id=organization_id,
             user_id=uuid.uuid4(),
@@ -185,11 +183,9 @@ class TestOrganization(IsolatedAsyncioTestCase):
             country="US",
             phone_number="(555)-555-5555",
         )
-        response = await self.client.patch(
-            f"/v1/organization/{organization_id}",
-            params=params,
-            json=request_body.dict(),
-        )
-
+        response = await self.client.patch(f"/v1/organization/{organization_id}", params=params,
+                                           json=request_body.dict())
+        
         self.assertIsNotNone(response)
         self.assertEqual(response.status_code, 200)
+        

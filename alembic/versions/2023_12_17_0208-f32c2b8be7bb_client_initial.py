@@ -23,9 +23,10 @@ depends_on: Union[str, Sequence[str], None] = None
 def upgrade() -> None:
     op.create_table('client',
                     sa.Column('id', GUID, server_default=sa.text('gen_random_uuid()'), nullable=False),
+                    sa.Column('organization_id', GUID, ForeignKey('organization.id'), nullable=False),
                     sa.Column('created', sa.TIMESTAMP(), server_default=sa.text('CURRENT_TIMESTAMP'), nullable=False),
                     sa.Column('modified', sa.TIMESTAMP(), server_default=sa.text('CURRENT_TIMESTAMP'), nullable=False),
-                    sa.Column('organization_name', sa.Text),
+                    sa.Column('name', sa.Text),
                     sa.Column('first_name', sa.Text),
                     sa.Column('last_name', sa.Text),
                     sa.Column('email', sa.Text),

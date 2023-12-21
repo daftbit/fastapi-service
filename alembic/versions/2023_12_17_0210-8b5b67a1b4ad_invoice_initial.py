@@ -26,7 +26,6 @@ def upgrade() -> None:
     op.create_table('invoice', 
                     sa.Column('id', GUID, server_default=sa.text('gen_random_uuid()'), nullable=False),
                     sa.Column('organization_id', GUID, ForeignKey('organization.id'), nullable=False),
-                    sa.Column('client_id', GUID, ForeignKey('client.id'), nullable=False),
                     sa.Column('created', sa.TIMESTAMP(), server_default=sa.text('CURRENT_TIMESTAMP'), nullable=False),
                     sa.Column('modified', sa.TIMESTAMP(), server_default=sa.text('CURRENT_TIMESTAMP'), nullable=False),
                     sa.Column('type', sa.Enum(InvoiceType), nullable=False),

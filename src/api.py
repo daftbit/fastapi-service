@@ -10,6 +10,7 @@ from src.core.exceptions.exception_handler import (
     validation_exception_handler,
 )
 from src.routes.organization import organization
+from src.routes.client import client
 
 
 def init_api() -> FastAPI:
@@ -55,6 +56,7 @@ def _init_routes(app: FastAPI):
     app : FastAPI
     """
     app.include_router(organization, prefix="/v1")
+    app.include_router(client, prefix="/v1")
 
 
 def _init_exception_handlers(app: FastAPI):

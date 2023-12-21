@@ -38,7 +38,7 @@ rollback-one: # Roll back the recently executed migration
 
 .PHONY: migration-history
 migration-history: # View migration history
-	docker-compse run --rm $(CONTAINER_NAME) \
+	docker-compose run --rm $(CONTAINER_NAME) \
 		/bin/bash -c "poetry run alembic -c /app/secrets/alembic.ini history"
 
 .PHONY: test-unit

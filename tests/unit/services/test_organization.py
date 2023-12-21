@@ -80,7 +80,9 @@ class TestOrganizationService(IsolatedAsyncioTestCase):
     async def test_patch_organization_by_id(self, mocked_repository):
         user_id = uuid.uuid4()
         organization_id = uuid.uuid4()
-        organization_update_schema = OrganizationUpdateSchema(city="SomeTown", state="SomeState", zip_code="12345")
+        organization_update_schema = OrganizationUpdateSchema(
+            city="SomeTown", state="SomeState", zip_code="12345"
+        )
         mocked_repository.return_value = Organization(
             id=organization_id,
             user_id=user_id,
@@ -96,5 +98,7 @@ class TestOrganizationService(IsolatedAsyncioTestCase):
             phone_number="(555) 555-5555",
         )
         service = OrganizationService(mocked_repository)
-        result = await service.patch_organization_by_id(organization_id, organization_update_schema, user_id)
+        result = await service.patch_organization_by_id(
+            organization_id, organization_update_schema, user_id
+        )
         self.assertIsNotNone(result)

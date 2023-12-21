@@ -17,6 +17,7 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
         error_message[invalid_data] = msg
     # Join the individual error messages
     error_message_data = ", ".join(" ".join([key, str(value)]) for key, value in error_message.items())
+    error_message_data = error_message_data.replace("__root__", "").strip()
     error_response = Error(
         error="Invalid request",
         message=error_message_data,
