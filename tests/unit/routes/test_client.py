@@ -120,7 +120,7 @@ class TestClient(IsolatedAsyncioTestCase):
         self.assertEqual(response.json()["message"], "user_id field required")
         self.assertEqual(
             response.json()["path"],
-            f"https://test-service/v1/organization/{organization_id}/client/{client_id}"
+            f"https://test-service/v1/organization/{organization_id}/client/{client_id}",
         )
         self.assertIsNotNone(response.json()["timestamp"])
         self.assertEqual(response.json()["status"], 422)
